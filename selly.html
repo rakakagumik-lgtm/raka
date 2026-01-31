@@ -1,0 +1,312 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Sweet Birthday 🎂</title><!-- GOOGLE FONT --><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet"><style>
+/* ================= ROOT ================= */
+:root{
+  --pink1:#ffd6e8;
+  --pink2:#ff9acb;
+  --pink3:#ff5fa2;
+  --pink4:#ff2f92;
+  --white:#fff;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  font-family:'Baloo 2', cursive;
+  background:radial-gradient(circle at top,var(--pink1),var(--pink3));
+  animation:bgShift 12s ease infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+@keyframes bgShift{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+/* ================= PAGE ================= */
+.page{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hidden{display:none}
+
+h1{
+  font-size:3.5em;
+  color:var(--pink4);
+  text-shadow:0 6px 0 var(--white),0 20px 40px rgba(0,0,0,.25);
+}
+
+/* ================= LETTER ================= */
+.envelope{
+  position:relative;
+  width:260px;
+  height:170px;
+  cursor:pointer;
+  animation:float 3s ease-in-out infinite;
+}
+
+.envelope .back{
+  position:absolute;
+  inset:0;
+  background:#ffb6da;
+  border-radius:18px;
+}
+
+.envelope .paper{
+  position:absolute;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  height:120px;
+  background:#fff;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--pink4);
+  font-size:1.2em;
+  transition:transform 1s ease;
+}
+
+.envelope .flap{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:50%;
+  background:#ff9acb;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;
+  transition:transform 1s ease;
+}
+
+.envelope.open .flap{transform:rotateX(180deg)}
+.envelope.open .paper{transform:translateY(-40px)}
+
+@keyframes float{50%{transform:translateY(-18px)}}
+
+/* ================= CAKE ================= */
+.cake{
+  position:relative;
+  margin:40px auto;
+  animation:cakeFloat 3s ease-in-out infinite;
+}
+
+@keyframes cakeFloat{50%{transform:translateY(-16px)}}
+
+.tier{
+  margin:0 auto;
+  background:linear-gradient(180deg,#fff4fa,#ffb6da,#ff7fb7);
+  border-radius:38px;
+  position:relative;
+  box-shadow:
+    0 10px 0 var(--pink4),
+    0 24px 45px rgba(0,0,0,.22),
+    inset 0 6px 14px rgba(255,255,255,.85);
+}
+
+.tier.small{width:150px;height:75px;margin-top:-30px}
+.tier.medium{width:210px;height:95px;margin-top:-30px}
+.tier.big{width:280px;height:120px}
+
+.tier::before{
+  content:"";
+  position:absolute;
+  top:6px;
+  left:12px;
+  right:12px;
+  height:12px;
+  background:repeating-radial-gradient(circle,#fff 0 5px,transparent 6px 12px);
+  border-radius:20px;
+  opacity:.85;
+}
+
+.tier::after{
+  content:"";
+  position:absolute;
+  inset:14px;
+  background:
+    radial-gradient(circle at 25% 35%,#fff 2px,transparent 3px),
+    radial-gradient(circle at 60% 45%,#ff2f92 2px,transparent 3px),
+    radial-gradient(circle at 40% 70%,#ffd1e8 2px,transparent 3px),
+    radial-gradient(circle at 75% 65%,#ff5fa2 2px,transparent 3px);
+  opacity:.75;
+}
+
+/* ================= CANDLE ================= */
+.candle{
+  width:30px;
+  height:75px;
+  background:repeating-linear-gradient(45deg,#fff,#fff 6px,var(--pink3) 6px,var(--pink3) 12px);
+  border-radius:14px;
+  margin:0 auto -20px;
+  position:relative;
+}
+
+.flame{
+  position:absolute;
+  top:-36px;
+  left:50%;
+  transform:translateX(-50%);
+  width:26px;
+  height:36px;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 30%,#fffbd1,orange 60%,#ff4d00 90%);
+  box-shadow:0 0 25px rgba(255,160,0,.9);
+  animation:flame 0.12s infinite alternate;
+  transition:opacity 1.2s ease,transform 1.2s ease;
+}
+
+.flame.off{opacity:0;transform:translateX(-50%) scale(0)}
+
+@keyframes flame{from{transform:translateX(-50%) scale(1)}to{transform:translateX(-50%) scale(1.25)}}
+
+/* ================= PARTICLES ================= */
+.heart,.sparkle{
+  position:fixed;
+  pointer-events:none;
+  opacity:0;
+}
+
+.heart{font-size:18px;animation:heartUp 6s ease forwards}
+.sparkle{width:4px;height:4px;background:white;border-radius:50%;animation:sparkleUp 6s linear forwards}
+
+@keyframes heartUp{
+  0%{transform:translateY(110vh);opacity:0}
+  20%{opacity:1}
+  100%{transform:translateY(-10vh);opacity:0}
+}
+
+@keyframes sparkleUp{
+  0%{transform:translateY(110vh) scale(0);opacity:0}
+  20%{opacity:.9}
+  100%{transform:translateY(-10vh) scale(1);opacity:0}
+}
+
+/* ================= CINEMATIC ================= */
+.cinematic{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,var(--pink2),var(--pink4));
+  opacity:0;
+  pointer-events:none;
+}
+
+.cinematic.active{animation:cinematic 2.2s ease forwards}
+
+@keyframes cinematic{
+  0%{opacity:0;transform:scale(1.1)}
+  40%{opacity:1}
+  70%{opacity:1;transform:scale(1)}
+  100%{opacity:0;transform:scale(.95)}
+}
+
+/* ================= PAGE 2 ================= */
+.message{
+  background:#fff0f7;
+  padding:50px;
+  max-width:650px;
+  border-radius:40px;
+  color:var(--pink4);
+  box-shadow:0 30px 70px rgba(0,0,0,.35);
+}
+</style></head>
+<body><!-- PAGE 1 --><div class="page" id="page1">
+  <h1>For Selly 💖</h1>
+  <div class="envelope" id="open">
+  <div class="back"></div>
+  <div class="paper">Klik surat ini ya 💌</div>
+  <div class="flap"></div>
+</div>
+</div><!-- PAGE 2 --><div class="page hidden" id="page2">
+  <div class="cake">
+    <!-- TOP DECOR -->
+    <div class="cake-top">
+      <div class="cherry"></div>
+      <div class="star">✨</div>
+      <div class="cherry"></div>
+    </div><div class="candle"><div class="flame" id="flame"></div></div>
+<div class="tier small"></div>
+<div class="tier medium"></div>
+<div class="tier big"></div>
+
+  </div>
+  <p style="color:white;font-size:1.4em">Tiup lilinnya 🎤💨</p>
+</div><!-- PAGE 3 --><div class="page hidden" id="page3">
+  <div class="message">
+    <h1>🎂 Happy Birthday Sayangg</h1>
+    <p>happy birthdayyy my loveeee 🎉 semogaaa kamuuuuu selaluuu happyyy, sehattt, dan makin manissss.. akuuu senenggg bangettt bisa punyaaa kamuuuu di hidupkuuuu, dan semogaaa kitaaa bisa terus ngejalanin semua petualangan seruuu barenggg, semogaaa kamuu makin cakepppp, makin cantikkk makinn lucuu makinnn makinnn pokonyaaa, dan janganlupa makin sayangg sama akuuu 😏 hari ini kamuuuuu ratuuuu, jadi akuuu siappp jadi pengawaalll setiamuuu hehe, semogaa hari-harimu selalu seindaaah senyummuuuuu dan hidupmuuuu dipenuhii kebahagiaaannn.. akuuu janjiii bakal selaluuu adaaa buat nemeniiiin kamuuuu, susahhh senanggg barenggg i loveee u soooo muchhh sayangggg 💐💖💞💕🎉</p>
+  </div>
+</div><div class="cinematic" id="cinematic"></div><script>
+const open=document.getElementById('open');
+const page1=document.getElementById('page1');
+const page2=document.getElementById('page2');
+const page3=document.getElementById('page3');
+const flame=document.getElementById('flame');
+const cinematic=document.getElementById('cinematic');
+
+open.onclick=()=>{
+  open.classList.add('open');
+  setTimeout(()=>{
+    page1.classList.add('hidden');
+    page2.classList.remove('hidden');
+    startMic();
+  },1200);
+}
+
+async function startMic(){
+  const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+  const ctx=new AudioContext();
+  const analyser=ctx.createAnalyser();
+  ctx.createMediaStreamSource(stream).connect(analyser);
+  analyser.fftSize=256;
+  const data=new Uint8Array(analyser.frequencyBinCount);
+
+  function listen(){
+    analyser.getByteFrequencyData(data);
+    const vol=data.reduce((a,b)=>a+b)/data.length;
+    if(vol>40){
+      flame.classList.add('off');
+      cinematic.classList.add('active');
+      setTimeout(()=>{
+        page2.classList.add('hidden');
+        page3.classList.remove('hidden');
+      },1600);
+    }else requestAnimationFrame(listen)
+  }
+  listen();
+}
+
+// particles
+setInterval(()=>{
+  const h=document.createElement('div');
+  h.className='heart';
+  h.textContent='💗';
+  h.style.left=Math.random()*100+'vw';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},600);
+
+setInterval(()=>{
+  const s=document.createElement('div');
+  s.className='sparkle';
+  s.style.left=Math.random()*100+'vw';
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),6000);
+},300);
+</script></body>
+</html>
